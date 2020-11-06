@@ -24,8 +24,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Which bundler?
-        command: bundle -v
+          name: Which bundler?
+          command: bundle -v
       - ruby/bundle-install
       - ruby/rspec-test
     
