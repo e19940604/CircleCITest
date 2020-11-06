@@ -19,7 +19,7 @@ jobs:
         environment:
           RAILS_ENV: test
       - image: circleci/postgres
-        enviroment:
+        environment:
           POSTGRES_PASSWORD: password
     steps:
       - checkout
