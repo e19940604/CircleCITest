@@ -13,3 +13,19 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - ruby/bundle-install
+  test:
+    docker:
+      - image: circleci/ruby:2.5.8-stretch-node
+        environment:
+          RAILS_ENV: test
+      - image: circleci/postgres
+        enviroment:
+          POSTGRES_PASSWORD: password
+    steps:
+      - checkout
+      - run:
+        name: Which bundler?
+        command: bundle -v
+      - ruby/bundle-install
+      - ruby/rspec-test
+    
