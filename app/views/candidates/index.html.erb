@@ -1,0 +1,30 @@
+<h1>Candidates#index</h1>
+<%= link_to "create candidate", new_candidate_path %>
+<table>
+  <thead>
+    <tr>
+        <td>候選人姓名</td>
+        <td>政黨</td>
+        <td>政見</td>
+        <td>得票數</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each do |candidate| %>
+        <tr>
+            <td><%= candidate.name %>(年齡：<%= candidate.age %> 歲)</td>
+            <td><%= candidate.party %></td>
+            <td><%= candidate.politics %></td>
+            <td><%= candidate.vote_logs.size %></td>
+
+            <td>
+                <%= link_to "edit" , edit_candidate_path(candidate) %>
+                <%= link_to "delete", candidate_path(candidate), method: "delete", data: {confirm: "Are you sure to delete ?"} %>
+            </td>
+            <td>
+                <%= link_to "vote it" , vote_candidate_path(candidate) , method: "post", data: { confirm: "Are you sure to vote this guys? "}%>
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
